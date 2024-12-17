@@ -666,22 +666,18 @@ stop := false; // buf := kbf_subj;
 
 c := ParseCmd(buf);
 
-// Simple commands
-
-if c.c = 'ADD' then if c.p = '' then DoAddTask else DoAddTaskEx(c.p)
-else if c.c = 'FILTER' then if c.p = '' then DoFilter else DoFilterEx(c.p)
-else if c.c = 'PACK' then DoPack
-else if c.c = 'PRINT' then if c.p = '' then DoPrint else DoPrintEx(StrToIntDef(c.p, 1))
-else if c.c = 'SAVE' then DoSave
-else if c.c = 'HELP' then DoHelp
-else if c.c = 'QUIT' then if DoQuit then Halt
-
-// Commands + parameter
-else if c.c = 'EDIT' then DoChgTaskEx(StrToIntDef(c.p, -1))
-else if c.c = 'KILL' then DoKillTaskEx(StrToIntDef(c.p, -1))
-else if c.c = 'DONE' then DoDoneTaskEx(StrToIntDef(c.p, -1))
-else if c.c = 'PENDING' then DoPendTaskEx(StrToIntDef(c.p, -1))
-else if c.c = 'SORT' then DoSortEx(c.p)
+     if c.c = 'ADD' then begin if c.p = '' then DoAddTask else DoAddTaskEx(c.p); end
+else if c.c = 'FILTER' then begin if c.p = '' then DoFilter else DoFilterEx(c.p); end
+else if c.c = 'PACK' then begin DoPack; end
+else if c.c = 'PRINT' then begin if c.p = '' then DoPrint else DoPrintEx(StrToIntDef(c.p, 1)); end
+else if c.c = 'SAVE' then begin DoSave; end
+else if c.c = 'HELP' then begin DoHelp; end
+else if c.c = 'QUIT' then begin if DoQuit then Halt; end
+else if c.c = 'EDIT' then begin DoChgTaskEx(StrToIntDef(c.p, -1)); end
+else if c.c = 'KILL' then begin DoKillTaskEx(StrToIntDef(c.p, -1)); end
+else if c.c = 'DONE' then begin DoDoneTaskEx(StrToIntDef(c.p, -1)); end
+else if c.c = 'PENDING' then begin DoPendTaskEx(StrToIntDef(c.p, -1)); end
+else if c.c = 'SORT' then begin DoSortEx(c.p); end
 		else
 			WriteLn('Bad command or syntax error');
 	end;
